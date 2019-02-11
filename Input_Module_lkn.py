@@ -1,4 +1,4 @@
-# copyright @Kainan Liu
+# copyright @Kainan Liu @Wenjie Luo
 def read_data(path):
     try:
         with open(path,'r') as f:
