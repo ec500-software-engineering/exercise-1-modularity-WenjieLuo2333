@@ -30,10 +30,7 @@ for i in range(3):
 			data_in = [j.read(key),i]
 			alert_sys.Alert_for_three_categories_input(data_in)
 alert_sound = alert_sys.Alert_Output()
-if alert_sound != -1:
-	print("Problem with ",key_words[alert_sound])
-else:
-	print("All is well.")
+UserInterface_module.alert_out(alert_sound)
 
 """
 AI Module
@@ -43,9 +40,9 @@ ai_sys = AiModule.AiModule()
 for j in stored_data:	
 	ai_sys.input_check(Input_bo,Input_bp,Input_pulse)
 
-result=ai_sys.predict()
+predict_bo,predict_bp,predict_pul=ai_sys.predict()
 
 """
 UI
 """
-UserInterface_module.userinterface_input(["Prediction Result:(bo,bp,pulse)",result])
+UserInterface_module.ai_output(predict_bo,predict_bp,predict_pul)
