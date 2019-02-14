@@ -1,5 +1,4 @@
 #copyright @Wenjie Luo
-import queue
 import threading
 import time
 import Alert_module
@@ -33,6 +32,6 @@ class ProcessThread (threading.Thread):
 					ai_sys.input_check(list(ai_input[0]),list(ai_input[1]),list(ai_input[2]))
 					predict_bo,predict_bp,predict_pul=ai_sys.predict()
 					self.AI_output_queue.put([predict_bo,predict_bp,predict_pul])
-			except:
+			except IOError:
 				time.sleep(1)
 		print('Process Thread Stop')

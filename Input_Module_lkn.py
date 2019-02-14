@@ -2,7 +2,6 @@
 def read_data(path):
     try:
         with open(path,'r') as f:
-            time = []
             value = []
             data = f.readline().split()
             while data:
@@ -14,7 +13,7 @@ def read_data(path):
                 data = f.readline().split()
         print("Read data successfully\n")
         return value
-    except:
+    except IOError:
         print("Error:No input data\n")
 
         

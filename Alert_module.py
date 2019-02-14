@@ -8,7 +8,7 @@ class Alert():
         self.bo = []
         self.bp = []
         self.pul = []
-        self.average_list = average_list = [[] for i in range(3)]
+        self.average_list = [[] for i in range(3)]
         self.alert_flag1 = 0
         self.alert_flag2 = 0
         self.alert_flag3 = 0

@@ -1,5 +1,4 @@
 #copyright @Wenjie Luo, @Xiang Li
-import queue
 import threading
 import time
 class UIThread (threading.Thread):
@@ -22,7 +21,7 @@ class UIThread (threading.Thread):
 						print("BP Alarm")
 					if a3 != 0:
 						print("Pulse Alarm")
-			except:
+			except IOError:
 				pass
 
 			try:				
@@ -35,6 +34,6 @@ class UIThread (threading.Thread):
 					print('predicted blood pressure is: ' + str(predBloodPressure))
 					print('predicted pulse is: ' + str(prePulse))
 					print("")
-			except:
+			except IOError:
 				time.sleep(1)
 		print('UI Thread Stop')

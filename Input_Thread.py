@@ -1,6 +1,5 @@
 #copyright @Wenjie Luo
 import Input_Module_lkn
-import queue
 import threading
 import time
 
@@ -20,10 +19,10 @@ class InputThread (threading.Thread):
 					break
 				else:
 					self.data = Input_Module_lkn.read_data(Input)
-					if self.data == None:
+					if self.data is None:
 						print("Wrong Path!")
 						continue
 					self.output_queue.put(self.data)
-			except:
+			except IOError:
 				time.sleep(3)
 		print('Input Thread Stop')
