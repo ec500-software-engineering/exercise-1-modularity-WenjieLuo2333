@@ -1,3 +1,4 @@
+#copyright @Wenjie Luo
 import queue
 import threading
 import time
