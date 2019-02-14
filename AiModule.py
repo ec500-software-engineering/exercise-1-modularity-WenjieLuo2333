@@ -18,8 +18,6 @@ class AiModule():
                     self.bo.append(i)
                     self.bp.append(j)
                     self.pulse.append(k)
-
-                print(self.bo)
                 break
 
         except AttributeError:

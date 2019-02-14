@@ -9,9 +9,12 @@ class Alert():
         self.bp = []
         self.pul = []
         self.average_list = average_list = [[] for i in range(3)]
-        self.alert_flag = -1
+        self.alert_flag1 = 0
+        self.alert_flag2 = 0
+        self.alert_flag3 = 0
 
     def exceed_threshold(self, data, tp):
+
         if tp == 0:
             if not 0.1 <= data <= 0.3:
                 return 1
@@ -33,10 +36,7 @@ class Alert():
         Compare data with certain threthold
         send flags to user interface module.
         """
-        if self.alert_flag != 0:
-            return self.alert_flag
-        else:
-            return 0
+        return self.alert_flag1,self.alert_flag2,self.alert_flag3
 
     def Alert_for_three_categories_input(self, data_in):
         """
@@ -50,11 +50,11 @@ class Alert():
             del (self.average_list[data_in[1]][0])
             self.average_list[data_in[1]].append(float(data_in[0]))
 
-        if len(self.average_list[0]) > 2 and self.exceed_threshold(numpy.mean(self.average_list[0]),'bo') != -1:
-            self.alert_flag = self.exceed_threshold(numpy.mean(self.average_list[data_in[1]]),'bo')
-        if len(self.average_list[1]) > 2 and self.exceed_threshold(numpy.mean(self.average_list[1]),'bp') != -1:
-            self.alert_flag = self.exceed_threshold(numpy.mean(self.average_list[data_in[1]]),'bp')
-        if len(self.average_list[2]) > 2 and self.exceed_threshold(numpy.mean(self.average_list[2]),'pul') != -1:
-            self.alert_flag = self.exceed_threshold(numpy.mean(self.average_list[data_in[1]]),'pul')
+        if len(self.average_list[0]) >= 15 and self.exceed_threshold(numpy.mean(self.average_list[0]),0) != 0:
+            self.alert_flag1 = self.exceed_threshold(numpy.mean(self.average_list[0]),0)
+        if len(self.average_list[1]) >= 15 and self.exceed_threshold(numpy.mean(self.average_list[1]),1) != 0:
+            self.alert_flag2 = self.exceed_threshold(numpy.mean(self.average_list[1]),1)
+        if len(self.average_list[2]) >= 15 and self.exceed_threshold(numpy.mean(self.average_list[2]),2) != 0:
+            self.alert_flag3 = self.exceed_threshold(numpy.mean(self.average_list[2]),2)
 
 

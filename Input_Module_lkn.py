@@ -7,10 +7,7 @@ def read_data(path):
             data = f.readline().split()
             while data:
                 if data:
-                    time.append(data[0])
-                    value.append(float(data[1]))
-                    
-
+                    value.append([float(data[0]),float(data[1]),float(data[2])])
                 else:
                     print("Empty data file!\n")
                     return 2
