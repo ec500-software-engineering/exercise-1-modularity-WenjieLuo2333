@@ -1,3 +1,2 @@
-numpy==1.14.2
-
+numpy
 flake8
