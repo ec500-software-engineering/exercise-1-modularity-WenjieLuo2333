@@ -1,3 +1,4 @@
+#copyright @Wenjie Luo
 import Input_Module_lkn
 import queue
 import threading
