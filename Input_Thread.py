@@ -4,7 +4,9 @@ import threading
 import time
 
 class InputThread (threading.Thread):
+	"""Thread to read the data. Simulate the device input."""
 	def __init__(self,input_queue,output_queue):
+		"""Thread Initialization"""
 		threading.Thread.__init__(self)
 		self.input_queue = input_queue
 		self.output_queue = output_queue
