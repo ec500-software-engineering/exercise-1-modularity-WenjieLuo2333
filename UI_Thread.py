@@ -2,6 +2,7 @@
 import threading
 import time
 class UIThread (threading.Thread):
+	"""Thread to display information recieved from process thread"""
 	def __init__(self,Alert_input_queue,AI_input_queue):
 		threading.Thread.__init__(self)
 		self.Alert_input_queue = Alert_input_queue
