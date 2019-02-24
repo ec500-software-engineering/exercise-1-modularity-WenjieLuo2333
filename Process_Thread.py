@@ -5,7 +5,10 @@ import Alert_module
 import AiModule
 
 class ProcessThread (threading.Thread):
+	"""Threads to process the data."""
 	def __init__(self,input_queue,Alert_output_queue,AI_output_queue):
+		"""input_queue send information from input thread to process."""
+		"""output_queue send information from process thread to output."""
 		threading.Thread.__init__(self)
 		self.input_queue = input_queue
 		self.Alert_output_queue = Alert_output_queue
