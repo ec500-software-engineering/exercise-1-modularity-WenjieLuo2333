@@ -1,26 +1,36 @@
-import Threads
+#copyright @Wenjie Luo wjluo@bu.edu
 import queue
+import Input_Thread
+import Process_Thread
+import UI_Thread
 import time
-def convert():
-	que480 = queue.Queue()
-	que720 = queue.Queue()
-	endqueue1 = queue.Queue()
-	endqueue2 = queue.Queue()
+"""
+Input Thread
+"""
+def main():
+	input_queue = queue.Queue()
+	data_queue = queue.Queue()
+	display_Alert_queue = queue.Queue()
+	display_AI_queue = queue.Queue()
+	In_Thread = Input_Thread.InputThread(input_queue,data_queue)
 
-	in_thread = Threads.get_in(que480,que720)
-	conv_720 = Threads.Convert720(que720,endqueue1)
-	conv_480 = Threads.Convert480(que480,endqueue2)
-	conv_720.start()
-	conv_480.start()
-	in_thread.start()
+	Pro_Thread = Process_Thread.ProcessThread(data_queue,display_Alert_queue,display_AI_queue)
+	UIThread=UI_Thread.UIThread(display_Alert_queue,display_AI_queue)
+	In_Thread.start()
+	Pro_Thread.start()
+	UIThread.start()
+	input_queue.put('input_data.txt')
+	time.sleep(1)
+	input_queue.put('exit')
+	"""
 	while True:
-		if (not endqueue1.empty()) and (not endqueue2.empty()):
-			print('All Done')
-			return 0
-		time.sleep(1)
-
-
-	
+		cmd = input()
+		if cmd == 'exit':
+			input_queue.put(cmd)
+			break
+		else:
+			input_queue.put(cmd)
+	"""
 
 if __name__ == '__main__':
-	convert()
+	main()
