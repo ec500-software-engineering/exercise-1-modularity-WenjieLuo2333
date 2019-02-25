@@ -1,7 +1,7 @@
 # exercise-1-modularity-WenjieLuo2333
 It's a readme document for the architecture based on the design of Mohit.
 
-## Simply run ```main.py``` to excute the process.
+## Simply run ```main.py``` to excute the process.<br/> And excute ```test.py``` to tun the test.
 Threads are defined in ```Input_Thread.py```,```Process_Thread.py```,```UI_Thread.py```.<br/>
 And the other modules are borrowed from team members(as the copyright).<br/>
 
